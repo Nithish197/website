@@ -1,0 +1,19 @@
+---
+import { SITE } from '../config';
+const year = 2026;
+const links = [
+  SITE.social.github && { label: 'GitHub', href: SITE.social.github },
+  SITE.social.linkedin && { label: 'LinkedIn', href: SITE.social.linkedin },
+  SITE.social.scholar && { label: 'Scholar', href: SITE.social.scholar },
+  SITE.social.twitter && { label: 'Twitter', href: SITE.social.twitter },
+  SITE.email && { label: 'Email', href: `mailto:${SITE.email}` },
+].filter(Boolean) as { label: string; href: string }[];
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="social">
+      {links.map((l) => <a href={l.href} target="_blank" rel="me noopener">{l.label}</a>)}
+    </div>
+    <p style="margin-top:14px;">© {year} {SITE.name}. Built with Astro.</p>
+  </div>
+</footer>

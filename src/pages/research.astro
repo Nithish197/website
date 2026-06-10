@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Edit this list freely. Newest first.
+const publications = [
+  {
+    title: 'Language Conditioned Self-Driving Cars Using Environmental Object Descriptions for Controlling Cars',
+    authors: 'N. B. Moudhgalya',
+    venue: "M.S. Thesis, Arizona State University",
+    year: 2021,
+    note: 'Imitation learning agents that follow natural-language instructions grounded in environmental landmarks.',
+    link: '',
+  },
+  {
+    title: 'DeepTrace: A Generic Deep Framework for Time-Series Forecasting',
+    authors: 'N. B. Moudhgalya et al.',
+    venue: 'IWANN',
+    year: 2019,
+    note: 'A bidirectional-CNN architecture outperforming LSTM and Prophet baselines on time-series forecasting.',
+    link: '',
+  },
+  {
+    title: 'Dynamic Food Sales Prediction using Artificial Neural Networks',
+    authors: 'N. B. Moudhgalya et al.',
+    venue: 'SAI Computing Conference (CVC)',
+    year: 2019,
+    note: '',
+    link: '',
+  },
+  {
+    title: 'Hierarchical Species Prediction using CLNN',
+    authors: 'N. B. Moudhgalya et al.',
+    venue: 'CLEF (ImageCLEF / PlantCLEF)',
+    year: 2018,
+    note: '',
+    link: '',
+  },
+];
+
+const interests = [
+  'Open-endedness & self-defined goals',
+  'Machine self-awareness & metacognition',
+  'Efficient / post-Transformer architectures',
+  'Neuroscience-grounded AI',
+  'Reinforcement & continual learning',
+  'Responsible, energy-aware intelligence',
+];
+---
+<Base title="Research" description="Publications, interests, and research directions.">
+  <h1>Research</h1>
+  <p class="lede">
+    I&rsquo;m most interested in intelligence that grows, knows itself, and stays
+    cheap and responsible — not intelligence defined by leaderboard scores.
+  </p>
+
+  <p class="section-label">Current interests</p>
+  <div>
+    {interests.map((i) => <span class="tag" style="margin-bottom:8px;">{i}</span>)}
+  </div>
+
+  <p class="section-label">Publications &amp; theses</p>
+  {publications.map((p) => (
+    <div class="card">
+      <div class="pub-title">
+        {p.link ? <a href={p.link} target="_blank" rel="noopener">{p.title}</a> : p.title}
+      </div>
+      <div class="pub-venue">{p.venue} · {p.year}</div>
+      <div class="pub-authors">{p.authors}</div>
+      {p.note && <div class="post-desc" style="margin-top:8px;">{p.note}</div>}
+    </div>
+  ))}
+</Base>

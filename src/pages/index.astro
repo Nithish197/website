@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../config';
+import { getCollection } from 'astro:content';
+
+// Show the 3 most recent posts on the home page.
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+<Base>
+  <section class="hero">
+    <h1>{SITE.name}</h1>
+    <p class="tagline">{SITE.tagline}</p>
+    <p class="lede">
+      I&rsquo;m an independent ML researcher drawn to a question I&rsquo;ve circled
+      since my first papers: <em>what would it take to build an intelligence that
+      genuinely learns, knows itself, and acts responsibly</em> — rather than one
+      that merely scales tokens and chases benchmarks.
+    </p>
+  </section>
+
+  <p>
+    My interests sit at the meeting point of <strong>open-endedness</strong>
+    (systems that set and revise their own goals), <strong>machine
+    self-awareness and metacognition</strong>, and <strong>efficient,
+    energy-responsible architectures</strong> — intelligence that could one day
+    run small and clean rather than vast and costly. I care about AI that is good
+    for the people and the planet it shares.
+  </p>
+
+  <p>
+    I came to this through neuroscience and cognition: I think the brain — the
+    most complicated biochemical system we know — still has more to teach us about
+    intelligence than the current race for scale admits. I write about these ideas
+    on the <a href="/blog">blog</a>, and my past work is on the
+    <a href="/research">research</a> page.
+  </p>
+
+  {posts.length > 0 && (
+    <>
+      <p class="section-label">Recent writing</p>
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li>
+            <a class="post-title" href={`/blog/${post.slug}`}>{post.data.title}</a>
+            <div class="post-meta">{fmt(post.data.date)}</div>
+            {post.data.description && <div class="post-desc">{post.data.description}</div>}
+          </li>
+        ))}
+      </ul>
+      <p style="margin-top:18px;"><a href="/blog">All posts →</a></p>
+    </>
+  )}
+</Base>

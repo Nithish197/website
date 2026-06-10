@@ -1,0 +1,16 @@
+---
+import { SITE, NAV } from '../config';
+const { pathname } = Astro.url;
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+---
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="/">{SITE.shortName}</a>
+    <nav class="links">
+      {NAV.map((item) => (
+        <a href={item.href} class={isActive(item.href) ? 'active' : ''}>{item.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
