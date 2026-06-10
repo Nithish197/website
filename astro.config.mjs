@@ -1,11 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// Deployed on Cloudflare Pages (served at the domain root).
-// After your first deploy, replace `site` with your real URL
-// (e.g. https://nithish.pages.dev, or your custom domain later).
+// Deployed on Cloudflare (served at the domain root).
+// Update `site` here if you later add a custom domain.
 export default defineConfig({
-  site: 'https://nithish.pages.dev',
+  site: 'https://website.nithish-moudhgalya.workers.dev',
   base: '/',
   markdown: {
     shikiConfig: {
