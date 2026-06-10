@@ -13,7 +13,7 @@ export const SITE = {
   email: 'nithish.moudhgalya@gmail.com',
   // Set/clear any of these; empty string hides the link.
   social: {
-    github: 'https://github.com/NithishB',
+    github: 'https://github.com/Nithish197',
     linkedin: 'https://www.linkedin.com/in/nithish-moudhgalya',
     scholar: '', // e.g. https://scholar.google.com/citations?user=XXXX
     twitter: '', // e.g. https://x.com/yourhandle
